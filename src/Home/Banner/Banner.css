@@ -1,3 +1,5 @@
 #slide1, #slide2, #slide3{
-    background-image: url(../../assets/backgroung/hero-bg.png)
+    background-image: url(../../assets/backgroung/hero-bg.png);
+  background-size: cover;
+
 }
