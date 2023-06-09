@@ -10,7 +10,7 @@ const Navbar = () => {
     logOut()
     .then(() =>{
 
-    })
+    }) 
     .catch(error => console.log(error))
   }
     const navItem =<>

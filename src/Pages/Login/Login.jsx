@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import login from "../../assets/login/93385-login.json";
 import Lottie from "lottie-react";
+import SocialLogin from "../../Shared/SocialLogin/SocialLogin";
 
 const Login = () => {
   const { signIn } = useContext(AuthContext);
@@ -18,7 +19,8 @@ const Login = () => {
     reset
   } = useForm();
   const onSubmit = (data) => {
-    signIn(data.email, data.password).then((result) => {
+    signIn(data.email, data.password)
+    .then((result) => {
       const loggedUser = result.user;
       console.log(loggedUser);
 
@@ -83,6 +85,7 @@ const Login = () => {
             <div className="form-control mt-6">
               <input className="btn btn-primary" type="submit" value="Login" />
             </div>
+            <SocialLogin/>
             <p className="my-4 text-center">
                     New to PICSTUDIO?{" "}
                     <Link className="text-indigo-700 font-bold" to="/signUp">

@@ -8,6 +8,7 @@ import signUp from "../../assets/login/118046-lf20-oahmox5rjson.json";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { FaEye } from "react-icons/fa";
+import SocialLogin from '../../Shared/SocialLogin/SocialLogin';
 
 
 const SignUp = () => {
@@ -52,16 +53,30 @@ const SignUp = () => {
           
           updateUserProfile(data.name, data.photoURL)
         .then(() => {
-         
-          Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: "User SignUp successfully",
-            showConfirmButton: false,
-            timer: 1500,
-          });
-          navigate(from, { replace: true });
-          reset();
+            const saveUser ={name: data.name, email: data.email}
+         fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type' : 'application/json'
+            },
+            body: JSON.stringify(saveUser)
+         })
+         .then(res => res.json())
+         .then(data => {
+            if(data.insertedId){
+                reset();
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "User SignUp successfully",
+                    showConfirmButton: false,
+                    timer: 1500,
+                  });
+                  navigate(from, { replace: true });
+            }
+         })
+     
+          
         })
         .catch((error) => console.log(error));
         });
@@ -161,6 +176,7 @@ const SignUp = () => {
                   value="Sign Up"
                 />
               </div>
+              <SocialLogin/>
               <p className="my-4 text-center">
                     Already Logged in?{" "}
                     <Link className="text-indigo-700 font-bold" to="/login">
