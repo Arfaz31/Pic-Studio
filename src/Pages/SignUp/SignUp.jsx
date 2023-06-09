@@ -13,7 +13,7 @@ import { FaEye } from "react-icons/fa";
 const SignUp = () => {
     const navigate = useNavigate();
     const location = useLocation();
-    const from = location.state?.from?.pathname || "/login";
+    const from = location.state?.from?.pathname || "/";
     const [passwordShown, setPasswordShown] = useState(false);
     const [cPasswordShown, setCPasswordShown] = useState(false);
     const { createUser, updateUserProfile, logOut } = useContext(AuthContext);
@@ -49,21 +49,19 @@ const SignUp = () => {
         .then((result) => {
           const signUpUser = result.user;
           console.log(signUpUser);
+          
           updateUserProfile(data.name, data.photoURL)
         .then(() => {
-          reset();
+         
           Swal.fire({
             position: "top-end",
             icon: "success",
-            title: "User created successfully",
+            title: "User SignUp successfully",
             showConfirmButton: false,
             timer: 1500,
           });
-          logOut()
-          .then(() => {
-            navigate(from, { replace: true });
-          })
-          .catch((error) => console.log(error));
+          navigate(from, { replace: true });
+          reset();
         })
         .catch((error) => console.log(error));
         });

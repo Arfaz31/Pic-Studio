@@ -1,15 +1,44 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import logo from "../../assets/logo/logo-1.png"
+import { AuthContext } from '../../Pages/Provider/AuthProvider';
+import { Tooltip } from 'react-tooltip';
 
 const Navbar = () => {
+  const {user, logOut} = useContext(AuthContext)
+  const handleLogOut = () =>{
+    logOut()
+    .then(() =>{
 
+    })
+    .catch(error => console.log(error))
+  }
     const navItem =<>
     <li><Link to='/'>Home</Link></li>
     <li><Link to='/instructors'>Instructors</Link></li>
     <li><Link to='/classes'>Classes</Link></li>
     <li><Link>Dashboard</Link></li>
+   {user? <> 
+    <button className='md:ml-2 ml-3 ' onClick={handleLogOut}>LogOut</button>
+    <div className="md:mr-10 md:ml-6 mr-0 ml-3 md:mt-0 mt-2">
+            <a
+              data-tooltip-id="my-tooltip"
+              data-tooltip-content={user.displayName}
+            >
+              <img
+                src={user.photoURL}
+                alt=""
+                className=" rounded-full object-cover w-10 h-10"
+              />
+            </a>
+            <Tooltip id="my-tooltip" />
+          </div>
+   </> :
+   <> 
     <li><Link to='/login'>Login</Link></li>
+   </>
+    
+   }
   </>
 
     return (

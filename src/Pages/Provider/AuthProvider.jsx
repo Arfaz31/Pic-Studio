@@ -24,7 +24,7 @@ export const AuthProvider = ({children}) => {
 
     const logOut = ()=>{
         setLoading(true)
-        return signOut()
+        return signOut(auth)
     }
 
     const updateUserProfile = (name, photo) =>{
@@ -48,7 +48,6 @@ export const AuthProvider = ({children}) => {
     loading,
     createUser,
     signIn, 
-    signOut,
     logOut,
     updateUserProfile
     }
