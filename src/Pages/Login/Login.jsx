@@ -15,6 +15,7 @@ const Login = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset
   } = useForm();
   const onSubmit = (data) => {
     signIn(data.email, data.password).then((data) => {
@@ -31,9 +32,9 @@ const Login = () => {
         },
       });
       navigate(from, { replace: true });
-      
+      reset();
     });
-    reset();
+  
   };
 
   return (
@@ -82,12 +83,12 @@ const Login = () => {
             <div className="form-control mt-6">
               <input className="btn btn-primary" type="submit" value="Login" />
             </div>
-            <p>
-              New Here? Please{" "}
-              <Link to="/signUp" className="text-indigo-700">
-                Sign Up
-              </Link>
-            </p>
+            <p className="my-4 text-center">
+                    New to PICSTUDIO?{" "}
+                    <Link className="text-indigo-700 font-bold" to="/signUp">
+                      Sign Up
+                    </Link>
+                  </p>
           </form>
         </div>
       </div>
