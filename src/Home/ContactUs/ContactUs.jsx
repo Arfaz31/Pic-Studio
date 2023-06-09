@@ -40,6 +40,7 @@ const ContactUs = () => {
             <input type="text" placeholder="Type here" className="input bg-transparent input-bordered border border-white w-3/4 mx-auto md:w-96 " />
            </div>
            <textarea placeholder="Bio" className="textarea bg-transparent border border-white textarea-bordered textarea-lg md:mt-8 mt-5 md:w-full w-3/4 md:ml-0 ml-12" ></textarea>
+           <button className='md:mt-5 mt-2 md:w-full w-[150px] text-center mx-28 md:mx-0  btn text-gray-400 bg-transparent border border-white hover:bg-info hover:text-white '>Submit</button>
             </div>
 
           </div>

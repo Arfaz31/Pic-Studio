@@ -37,6 +37,7 @@ const Achievement = () => {
                     <img src={achieveThree} className='w-3/4 mx-auto' alt="" />
                     <h4 className='font-bold text-3xl text-black group-hover:text-white'>1000+</h4>
                     <p className='font-bold text-xl text-center text-black group-hover:text-white'>ARCHIVE PICTURE</p>
+                 
                 </div>
             </div>
         </div>
