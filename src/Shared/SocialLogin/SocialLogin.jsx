@@ -31,7 +31,7 @@ const SocialLogin = () => {
   };
   return (
     <div>
-      <div className="divider"></div>
+      <div className="divider">Or Login With</div>
       <div className="w-full text-center my-4">
         <button
           onClick={handleSignInWithGoogle}

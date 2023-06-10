@@ -17,8 +17,8 @@ const Navbar = () => {
     <li><Link to='/'>Home</Link></li>
     <li><Link to='/instructors'>Instructors</Link></li>
     <li><Link to='/classes'>Classes</Link></li>
-    <li><Link>Dashboard</Link></li>
    {user? <> 
+    <li><Link to='/dashboard'>Dashboard</Link></li>
     <button className='md:ml-2 ml-3 ' onClick={handleLogOut}>LogOut</button>
     <div className="md:mr-10 md:ml-6 mr-0 ml-3 md:mt-0 mt-2">
             <a
