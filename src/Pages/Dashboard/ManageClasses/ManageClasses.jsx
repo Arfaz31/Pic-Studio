@@ -6,7 +6,7 @@ const ManageClasses = () => {
 
     
     const [manageClass, setManageClass]= useState([])
-
+ 
     useEffect(()=>{
         fetch('http://localhost:5000/allclasses')
         .then(res=> res.json())
@@ -53,6 +53,7 @@ const ManageClasses = () => {
     })
    }
 
+   
 
     return (
         <div>
@@ -74,7 +75,7 @@ const ManageClasses = () => {
               <p>Status: {cl.status === 'approve' ? 'Approved' : cl.status === 'deny' ? 'Denied' : 'Pending'}</p>
               <div className="card-actions">
                 <button disabled={cl.status === "approve" && "deny"} onClick={()=> handleApproved(cl._id)} className="btn btn-info"> Approve</button>
-                <button disabled={cl.status === "approve" && "deny"} onClick={()=>  handleDenied (cl._id)} className="btn btn-info">Deny</button>
+                <button  disabled={cl.status === "approve" && "deny"} onClick={()=>  handleDenied (cl._id)} className="btn btn-info">Deny</button>
                 <Link to='/dashboard/feedback'>  <button className="btn btn-info">send feedback</button></Link>
               </div>
             </div>

@@ -1,7 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layout/Main";
 import Home from "../Home/Home";
-import Instructors from "../Pages/Instructors/Instructors";
 import Classes from "../Pages/Classes/Classes";
 import ErrorPage from "../ErrorPage/ErrorPage";
 import Login from "../Pages/Login/Login";
@@ -14,6 +13,7 @@ import MyClass from "../Pages/Instructors/MyClass/MyClass";
 import AddClass from "../Pages/Instructors/AddClass/AddClass";
 import AdminRoute from "./AdminRoute";
 import Feedback from "../Pages/Dashboard/Feedback/Feedback";
+import Instructor from "../Pages/Instructor/Instructor";
 
 export const router = createBrowserRouter([
   {
@@ -26,8 +26,10 @@ export const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/instructors",
-        element: <Instructors />,
+        path: "/instructor",
+        element: <Instructor />,
+        loader: () => fetch('http://localhost:5000/ourInstructor')
+    
       },
       {
         path: "/classes",
