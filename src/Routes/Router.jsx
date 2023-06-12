@@ -14,6 +14,8 @@ import AddClass from "../Pages/Instructors/AddClass/AddClass";
 import AdminRoute from "./AdminRoute";
 import Feedback from "../Pages/Dashboard/Feedback/Feedback";
 import Instructor from "../Pages/Instructor/Instructor";
+import MySelectedClass from "../Pages/Dashboard/Student/MySelectedClass/MySelectedClass";
+import MyEnrolledClass from "../Pages/Dashboard/Student/MyEnrolledClass/MyEnrolledClass";
 
 export const router = createBrowserRouter([
   {
@@ -34,6 +36,7 @@ export const router = createBrowserRouter([
       {
         path: "/classes",
         element: <Classes />,
+        loader: () => fetch('http://localhost:5000/ourClasses')
       },
       {
         path: "/login",
@@ -60,6 +63,10 @@ export const router = createBrowserRouter([
         path:"manageClasses",
         element: <AdminRoute><ManageClasses/></AdminRoute>
       },
+      {
+        path:"feedback",
+        element: <Feedback/>
+      },
 
        //instructor
        {
@@ -70,10 +77,17 @@ export const router = createBrowserRouter([
         path:"addClass",
         element: <AddClass/>
       },
+
+      //Student
       {
-        path:"feedback",
-        element: <Feedback/>
-      }
+        path:"mySelectedClasses",
+        element: <MySelectedClass/>
+      },
+      {
+        path:"myEnrolledClasses",
+        element: <MyEnrolledClass/>
+      },
+      
     ]
   },
 ]);

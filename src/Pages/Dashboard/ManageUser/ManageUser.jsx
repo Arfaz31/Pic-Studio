@@ -74,8 +74,8 @@ fetch(`http://localhost:5000/users/instructor/${user._id}`,{
         <td>{user.name}</td>
         <td>{user.email}</td>
         <td>{user.role === 'admin' ? 'Admin' : user.role === 'instructor' ? 'Instructor' : 'student'}</td>
-        <td><button disabled={user.role === "admin"} onClick={() =>handleMakeAdmin(user) } className="btn btn-primary btn-sm">Admin</button></td>
-        <td><button disabled={user.role === "instructor"} onClick={() =>handleMakeInstructor(user) } className="btn btn-primary btn-sm">Instructor</button></td>
+        <td><button disabled={user.role === "admin"} onClick={() =>handleMakeAdmin(user) } className="btn btn-info  btn-sm">Admin</button></td>
+        <td><button disabled={user.role === "instructor"} onClick={() =>handleMakeInstructor(user) } className="btn btn-info  btn-sm">Instructor</button></td>
       
       </tr>
         )
