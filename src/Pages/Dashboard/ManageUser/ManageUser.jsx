@@ -1,11 +1,15 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import Swal from 'sweetalert2';
+import UseAxiosSecure from '../../../Hooks/UseAxiosSecure';
 
 const ManageUser = () => {
+    const[axiosSecure] = UseAxiosSecure()
 const {data: users = [], refetch} = useQuery(['users'], async()=>{
-    const res = await fetch('http://localhost:5000/users')
-    return res.json()
+  // const res = await fetch('http://localhost:5000/users')
+  // return res.json()
+    const res = await axiosSecure.get('/users')
+    return res.data
 })
 
 const handleMakeAdmin = (user) =>{
@@ -16,6 +20,7 @@ fetch(`http://localhost:5000/users/admin/${user._id}`,{
 .then(data => {
     console.log(data)
     if(data.modifiedCount){
+        refetch()
             Swal.fire({
               position: 'top-end',
               icon: 'success',
@@ -34,6 +39,7 @@ fetch(`http://localhost:5000/users/instructor/${user._id}`,{
 .then(data => {
     console.log(data)
     if(data.modifiedCount){
+      refetch()
             Swal.fire({
               position: 'top-end',
               icon: 'success',
@@ -57,7 +63,7 @@ fetch(`http://localhost:5000/users/instructor/${user._id}`,{
         <th>Email</th>
         <th>Role</th>
         <th>Action</th>
-        <th>Action</th>
+        
       </tr>
     </thead>
     <tbody>
@@ -67,7 +73,7 @@ fetch(`http://localhost:5000/users/instructor/${user._id}`,{
         <th>{index + 1}</th>
         <td>{user.name}</td>
         <td>{user.email}</td>
-        <td>{user.role === 'admin' ? 'Admin' : user.role === 'instructor' ? 'Instructor' : 'Student'}</td>
+        <td>{user.role === 'admin' ? 'Admin' : user.role === 'instructor' ? 'Instructor' : 'student'}</td>
         <td><button disabled={user.role === "admin"} onClick={() =>handleMakeAdmin(user) } className="btn btn-primary btn-sm">Admin</button></td>
         <td><button disabled={user.role === "instructor"} onClick={() =>handleMakeInstructor(user) } className="btn btn-primary btn-sm">Instructor</button></td>
       

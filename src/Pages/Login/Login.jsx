@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../Provider/AuthProvider";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -6,11 +6,13 @@ import Swal from "sweetalert2";
 import login from "../../assets/login/93385-login.json";
 import Lottie from "lottie-react";
 import SocialLogin from "../../Shared/SocialLogin/SocialLogin";
+import { FaEye } from "react-icons/fa";
 
 const Login = () => {
   const { signIn } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
+  const [passwordShown, setPasswordShown] = useState(false);
   const from = location.state?.from?.pathname || "/";
   const {
     register,
@@ -70,13 +72,13 @@ const Login = () => {
                 <span className="label-text">Password</span>
               </label>
               <input
-                type="password"
+                 type={passwordShown ? 'text' : 'password'}
                 {...register("password", { required: true })}
                 name="password"
                 placeholder="password"
                 className="input input-bordered"
               />
-
+      <FaEye onClick={()=> setPasswordShown(!passwordShown)} className="md:-mt-8 -mt-8  md:ml-72 ml-60"></FaEye>
               {errors.password?.type === "required" && (
                 <p className="text-red-500">Password is required</p>
               )}

@@ -6,7 +6,7 @@ const ContactUs = () => {
   return (
     <div>
       <div className="contactUs bg-fixed text-white my-40 ">
-        <section className="pt-8 bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)] md:h-[600px] h-[800px]">
+        <section className="pt-5 md:pt-8 bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)] md:h-[600px] h-[800px]">
           <div className="flex md:flex-row flex-col   md:justify-around  md:pt-28  pt-6">
             <div className=" flex flex-col md:text-start text-center">
               <h4 className="font-bold text-3xl text-white mb-6">CONTACT</h4>
@@ -32,7 +32,7 @@ const ContactUs = () => {
                 <FaLinkedin/>
               </div>
             </div>
-            <div className="pt-6">
+            <div className="md:pt-0 pt-6">
            <div className="grid md:grid-cols-2 grid-cols-1 md:gap-8 gap-5 ">
            <input type="text" placeholder="Type here" className="input bg-transparent input-bordered border border-white w-3/4 mx-auto md:w-96 " />
             <input type="text" placeholder="Type here" className="input bg-transparent input-bordered border border-white w-3/4 mx-auto md:w-96 " />
