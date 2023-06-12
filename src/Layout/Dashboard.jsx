@@ -56,9 +56,9 @@ const Dashboard = () => {
             {isAdmin?.role === "admin" && (
               <>
                 <li className="text-white">
-                  <NavLink>
+                  <Link>
                     <FaHome></FaHome>Admin Home
-                  </NavLink>
+                  </Link>
                 </li>
                 <li className="text-white">
                   <NavLink to="/dashboard/manageClasses">
@@ -75,9 +75,9 @@ const Dashboard = () => {
 
             {isAdmin?.role === "instructor" && <>
             <li className="text-white">
-                  <NavLink>
+                  <Link>
                     <FaHome></FaHome>Instructor Home
-                  </NavLink>
+                  </Link>
                 </li>
                 <li className="text-white">
                   <NavLink to="/dashboard/addClass">
@@ -100,9 +100,9 @@ const Dashboard = () => {
             {isAdmin?.role === "student" && (
               <>
                 <li className="text-white">
-                  <NavLink>
+                  <Link>
                     <FaHome></FaHome>Student Home
-                  </NavLink>
+                  </Link>
                 </li>
                 <li className="text-white">
                   <NavLink to="/dashboard/mySelectedClasses">

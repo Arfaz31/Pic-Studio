@@ -19,7 +19,7 @@ const MyClass = () => {
             <figure>
               <img
                 src={cl.photoUrl}
-                alt="Shoes"
+                alt="photography-class"
               />
             </figure>
             <div className="card-body">
