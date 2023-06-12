@@ -23,15 +23,19 @@ const Dashboard = () => {
       <div className="drawer lg:drawer-open">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content flex flex-col items-center justify-center">
-          {/* Page content here */}
-          <Outlet></Outlet>
           <label
             htmlFor="my-drawer-2"
-            className="btn btn-primary drawer-button lg:hidden"
+            className="btn btn-info drawer-button lg:hidden md:my-0 my-10"
           >
             Open drawer
           </label>
+
+            {/* Page content here */}
+            <Outlet></Outlet>
         </div>
+
+
+
         <div className="drawer-side">
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
           <ul className="menu p-4 w-80 h-full bg-gray-700 space-y-4">
@@ -52,43 +56,43 @@ const Dashboard = () => {
             {isAdmin?.role === "admin" && (
               <>
                 <li className="text-white">
-                  <Link>
+                  <NavLink>
                     <FaHome></FaHome>Admin Home
-                  </Link>
+                  </NavLink>
                 </li>
                 <li className="text-white">
-                  <Link to="/dashboard/manageClasses">
+                  <NavLink to="/dashboard/manageClasses">
                     <FaUserCog></FaUserCog> Manage Classes
-                  </Link>
+                  </NavLink>
                 </li>
                 <li className="text-white">
-                  <Link to="/dashboard/manageUsers">
+                  <NavLink to="/dashboard/manageUsers">
                     <FaUsersCog></FaUsersCog> Manage Users
-                  </Link>
+                  </NavLink>
                 </li>
               </>
             )}
 
             {isAdmin?.role === "instructor" && <>
             <li className="text-white">
-                  <Link>
+                  <NavLink>
                     <FaHome></FaHome>Instructor Home
-                  </Link>
+                  </NavLink>
                 </li>
                 <li className="text-white">
-                  <Link to="/dashboard/addClass">
+                  <NavLink to="/dashboard/addClass">
                   <FaRegUser></FaRegUser> Add A Class
-                  </Link>
+                  </NavLink>
                 </li>
                 <li className="text-white">
-                  <Link to="/dashboard/myClass">
+                  <NavLink to="/dashboard/myClass">
                     <FaUserCheck></FaUserCheck> My Classes
-                  </Link>
+                  </NavLink>
                 </li>
                 <li className="text-white">
-                  <Link to="/dashboard/totalEnrolledClasses">
+                  <NavLink to="/dashboard/totalEnrolledClasses">
                     <FaUserCheck></FaUserCheck> Total Enrolled Students
-                  </Link>
+                  </NavLink>
                 </li>
             
             </>}
@@ -96,36 +100,24 @@ const Dashboard = () => {
             {isAdmin?.role === "student" && (
               <>
                 <li className="text-white">
-                  <Link>
+                  <NavLink>
                     <FaHome></FaHome>Student Home
-                  </Link>
+                  </NavLink>
                 </li>
                 <li className="text-white">
-                  <Link to="/dashboard/mySelectedClasses">
+                  <NavLink to="/dashboard/mySelectedClasses">
                     <FaUserFriends></FaUserFriends> My Selected Classes
-                  </Link>
+                  </NavLink>
                 </li>
                 <li className="text-white">
-                  <Link to="/dashboard/myEnrolledClasses">
+                  <NavLink to="/dashboard/myEnrolledClasses">
                     <FaUserCheck></FaUserCheck> My Enrolled Classes
-                  </Link>
+                  </NavLink>
                 </li>
               </>
             )}
 
-            {/* {
-            isAdmin ? <>
-             <li className="text-white"><Link><FaHome></FaHome>Admin Home</Link></li>
-             <li className="text-white"><Link to='/dashboard/manageClasses'><FaUserCog></FaUserCog>  Manage Classes</Link></li>
-              <li className="text-white"><Link to='/dashboard/manageUsers'><FaUsersCog></FaUsersCog> Manage Users</Link></li>
-            </> : <>
-            <li className="text-white"><Link><FaHome></FaHome>Student Home</Link></li>
-            <li className="text-white"><Link to='/dashboard/mySelectedClasses'><FaUserFriends></FaUserFriends> My Selected Classes</Link></li>
-            <li className="text-white"><Link to='/dashboard/myEnrolledClasses'><FaUserCheck></FaUserCheck>  My Enrolled Classes</Link></li>
-            <li className="text-white"><Link to='/dashboard/addClass'><FaRegPlusSquare></FaRegPlusSquare> Add a Class</Link></li>
-            <li className="text-white"><Link to='/dashboard/myClass'><FaRegUser></FaRegUser> My Classes</Link></li>
-            </>
-          } */}
+           
             <div className="divider bg-white h-1"></div>
             <li className="text-white">
               <Link to="/">

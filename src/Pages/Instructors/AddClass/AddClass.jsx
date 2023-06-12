@@ -1,10 +1,11 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../Provider/AuthProvider';
 import { useForm } from 'react-hook-form';
+import Swal from 'sweetalert2';
 
 const AddClass = () => {
     const{user}= useContext(AuthContext)
-    const {register, handleSubmit,  formState: { errors }} = useForm();
+    const {register, handleSubmit,  formState: { errors }, reset} = useForm();
     
       const onSubmit = (data) =>{
         console.log(data)
@@ -27,6 +28,16 @@ const AddClass = () => {
         .then(res=> res.json())
         .then(data=>{
             console.log(data)
+            if(data.insertedId){
+              reset();
+              Swal.fire({
+                  position: "top-end",
+                  icon: "success",
+                  title: "Class Added successfully",
+                  showConfirmButton: false,
+                  timer: 1500,
+                });
+          }
         })
       }
   return (
@@ -114,7 +125,7 @@ const AddClass = () => {
              </div>
             <div className="form-control mt-6">
               <input
-                className="btn btn-primary"
+                className="btn btn-info"
                 type="submit"
                 value="Add Class"
               />
