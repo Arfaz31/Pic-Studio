@@ -53,6 +53,7 @@ const ManageClasses = () => {
     })
    }
 
+
    
 
     return (
@@ -74,9 +75,10 @@ const ManageClasses = () => {
               <p>Available seat: {cl.availableSeat}</p>
               <p>Status: {cl.status === 'approve' ? 'Approved' : cl.status === 'deny' ? 'Denied' : 'Pending'}</p>
               <div className="card-actions">
-                <button disabled={cl.status === "approve" && "deny"} onClick={()=> handleApproved(cl._id)} className="btn btn-info"> Approve</button>
-                <button  disabled={cl.status === "approve" && "deny"} onClick={()=>  handleDenied (cl._id)} className="btn btn-info">Deny</button>
-                <Link to='/dashboard/feedback'>  <button className="btn btn-info">send feedback</button></Link>
+                <button disabled={cl.status === "approve" || cl.status === "deny"} onClick={()=> handleApproved(cl._id)} className="btn btn-info"> Approve</button>
+                <button  disabled={cl.status === "approve" || cl.status === "deny"} onClick={()=>  handleDenied (cl._id)} className="btn btn-info">Deny</button>
+        <Link to='/dashboard/feedback'>  <button  className="btn btn-info">send feedback</button></Link>
+                
               </div>
             </div>
           </div>)

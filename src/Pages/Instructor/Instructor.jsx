@@ -8,7 +8,7 @@ import banner from "../../assets/banner/photo.jpg"
 const Instructor = () => {
   const loaderInstructor = useLoaderData();
   return (
-    <div>
+    <div className="mb-40">
         <BannerCover
     
     image={banner}
