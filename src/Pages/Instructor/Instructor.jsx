@@ -18,14 +18,14 @@ const Instructor = () => {
 
         </BannerCover>
   
-      <div className="grid grid-cols-1 md:grid-cols-3   mb-10 w-3/4 mx-auto ">
+      <div className="grid grid-cols-1 md:grid-cols-3  gap-10  mb-10 w-full mx-auto ">
         {loaderInstructor.map((instructor) => (
           <div
             key={instructor._id}
             className="card w-80 mx-auto bg-slate-200 shadow-xl"
           >
             <figure>
-              <img src={instructor.photoUrl} alt="instructor" className="p-3" />
+              <img src={instructor.photo} alt="instructor" className="p-3" />
             </figure>
             <div className="card-body">
               <h2 className="card-title">{instructor.name}</h2>

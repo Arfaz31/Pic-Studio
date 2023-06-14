@@ -11,6 +11,7 @@ const CheckOutForm = ({enrollItem}) => {
     const [cardError, setCardError] = useState('')
     const [clientSecret, setClientSecret] = useState('')
     const [processing, setProcessing] = useState(false)
+    const [transactionId, setTransactionId] = useState('')
     const {availableSeat, classItemId, className, image, instructorName, _id, price}=  enrollItem
 
 
@@ -67,6 +68,7 @@ const CheckOutForm = ({enrollItem}) => {
           console.log(paymentIntent)
           setProcessing(false)
           if(paymentIntent.status === "succeeded"){
+            setTransactionId(paymentIntent.id)
             const transactionId= paymentIntent.id;
             const payment= {
               email:user?.email,
@@ -106,11 +108,12 @@ const CheckOutForm = ({enrollItem}) => {
           },
         }}
       />
-      <button className="btn btn-primary ml-60 btn-xs mt-6" type="submit" disabled={!stripe || !clientSecret || processing}>
+      <button className="btn btn-info md:ml-80 ml-0 mt-5 btn-sm " type="submit" disabled={!stripe || !clientSecret || processing}>
         Pay
       </button>
     </form>
       {cardError && <p className='text-red-500'>{cardError}</p>}
+      {transactionId && <p className='text-green-500'>Transaction complete with transactionId: {transactionId}</p>}
        </>
     );
 };

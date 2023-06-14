@@ -4,6 +4,7 @@ import { app } from '../../Firebase/firebase.config';
 import axios from 'axios';
 
 
+
 export const AuthContext = createContext(null)
 const auth = getAuth(app);
 
@@ -12,6 +13,8 @@ export const AuthProvider = ({children}) => {
     const [user, setUser] =useState(null)
     const [loading, setLoading] = useState(true)
     const googleProvider = new GoogleAuthProvider();
+
+
 
     const createUser= (email, password) =>{
         setLoading(true)
@@ -70,7 +73,8 @@ export const AuthProvider = ({children}) => {
     signIn, 
     googleSignIn,
     logOut,
-    updateUserProfile
+    updateUserProfile,
+ 
     }
 
 

@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import UseRole from "../../Hooks/UseRole";
+import useAdmin from "../../Hooks/UseAdmin";
 
 const ClassCard = ({ item }) => {
   const { photoUrl, className, availableSeat, instructorName, _id, price } =
@@ -10,7 +10,7 @@ const ClassCard = ({ item }) => {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
-  const [isAdmin] = UseRole()
+  const [isAdmin] = useAdmin()
 
   const handleSelected = (item) => {
     console.log(item);

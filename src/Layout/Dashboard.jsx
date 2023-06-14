@@ -12,14 +12,14 @@ import { Link, NavLink, Outlet } from "react-router-dom";
 import logo from "../../src/assets/logo/logo-1.png";
 // import useAdmin from "../Hooks/UseAdmin";
 import { AuthContext } from "../Pages/Provider/AuthProvider";
-import UseRole from "../Hooks/UseRole";
-
-
+import useAdmin from "../Hooks/UseAdmin";
+import UseInstructor from "../Hooks/UseInstructor";
 
 const Dashboard = () => {
   // const isAdmin = true;
-  const [isAdmin] = UseRole()
-  const {user} = useContext(AuthContext)
+  const { user } = useContext(AuthContext);
+  const [isAdmin] = useAdmin();
+  const [isInstructor] = UseInstructor();
 
   return (
     <div>
@@ -33,11 +33,9 @@ const Dashboard = () => {
             Open drawer
           </label>
 
-            {/* Page content here */}
-            <Outlet></Outlet>
+          {/* Page content here */}
+          <Outlet></Outlet>
         </div>
-
-
 
         <div className="drawer-side">
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
@@ -56,7 +54,30 @@ const Dashboard = () => {
             </div>
             <div className="divider bg-white h-1"></div>
 
-            {isAdmin?.role === "admin" && (
+            {isInstructor && !isAdmin ? (
+              <>
+                <li className="text-white">
+                  <Link>
+                    <FaHome></FaHome>Instructor Home
+                  </Link>
+                </li>
+                <li className="text-white">
+                  <NavLink to="/dashboard/addClass">
+                    <FaRegUser></FaRegUser> Add A Class
+                  </NavLink>
+                </li>
+                <li className="text-white">
+                  <NavLink to="/dashboard/myClass">
+                    <FaUserCheck></FaUserCheck> My Classes
+                  </NavLink>
+                </li>
+                <li className="text-white">
+                  <NavLink to="/dashboard/totalEnrolledClasses">
+                    <FaUserCheck></FaUserCheck> Total Enrolled Students
+                  </NavLink>
+                </li>
+              </>
+            ) : isAdmin ? (
               <>
                 <li className="text-white">
                   <Link>
@@ -74,33 +95,7 @@ const Dashboard = () => {
                   </NavLink>
                 </li>
               </>
-            )}
-
-            {isAdmin?.role === "instructor" && <>
-            <li className="text-white">
-                  <Link>
-                    <FaHome></FaHome>Instructor Home
-                  </Link>
-                </li>
-                <li className="text-white">
-                  <NavLink to="/dashboard/addClass">
-                  <FaRegUser></FaRegUser> Add A Class
-                  </NavLink>
-                </li>
-                <li className="text-white">
-                  <NavLink to="/dashboard/myClass">
-                    <FaUserCheck></FaUserCheck> My Classes
-                  </NavLink>
-                </li>
-                <li className="text-white">
-                  <NavLink to="/dashboard/totalEnrolledClasses">
-                    <FaUserCheck></FaUserCheck> Total Enrolled Students
-                  </NavLink>
-                </li>
-            
-            </>}
-
-            {isAdmin?.role === "student" && (
+            ) : (
               <>
                 <li className="text-white">
                   <Link>
@@ -120,7 +115,6 @@ const Dashboard = () => {
               </>
             )}
 
-           
             <div className="divider bg-white h-1"></div>
             <li className="text-white">
               <Link to="/">
