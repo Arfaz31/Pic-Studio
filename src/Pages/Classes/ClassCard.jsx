@@ -24,7 +24,7 @@ const ClassCard = ({ item }) => {
     };
     console.log(selectedClass);
     if (user) {
-      fetch("http://localhost:5000/mySelectedClasses", {
+      fetch("https://pic-studio-server-arfaz31.vercel.app/mySelectedClasses", {
         method: "POST",
         headers: {
           "content-type": "application/json",

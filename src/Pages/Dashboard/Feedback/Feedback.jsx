@@ -7,7 +7,7 @@ const Feedback = () => {
     const navigate = useNavigate()
 
     useEffect(()=>{
-        fetch('http://localhost:5000/allclasses')
+        fetch('https://pic-studio-server-arfaz31.vercel.app/allclasses')
         .then(res=> res.json())
         .then(data=> setFeedbackClass(data))
     },[])
@@ -16,7 +16,7 @@ const Feedback = () => {
   const onSubmit = data => {
     const adminFeedback ={feedback:data.feedback}
     console.log(data)
-    fetch(`http://localhost:5000/feedback/${feedbackClass[0]._id}`, {
+    fetch(`https://pic-studio-server-arfaz31.vercel.app/feedback/${feedbackClass[0]._id}`, {
         method:'PATCH',
         headers:{
             'content-type' : 'application/json'

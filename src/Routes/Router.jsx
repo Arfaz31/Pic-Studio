@@ -17,6 +17,7 @@ import Instructor from "../Pages/Instructor/Instructor";
 import MySelectedClass from "../Pages/Dashboard/Student/MySelectedClass/MySelectedClass";
 import MyEnrolledClass from "../Pages/Dashboard/Student/MyEnrolledClass/MyEnrolledClass";
 import Payment from "../Pages/Dashboard/Payment/Payment";
+import PaymentHistory from "../Pages/Dashboard/Payment/PaymentHistory";
 
 export const router = createBrowserRouter([
   {
@@ -31,13 +32,13 @@ export const router = createBrowserRouter([
       {
         path: "/instructor",
         element: <Instructor />,
-        loader: () => fetch('http://localhost:5000/ourInstructor')
+        loader: () => fetch('https://pic-studio-server-arfaz31.vercel.app/ourInstructor')
     
       },
       {
         path: "/classes",
         element: <Classes />,
-        loader: () => fetch('http://localhost:5000/ourClasses')
+        loader: () => fetch('https://pic-studio-server-arfaz31.vercel.app/ourClasses')
       },
       {
         path: "/login",
@@ -87,11 +88,16 @@ export const router = createBrowserRouter([
       {
         path:"myEnrolledClasses",
         element: <MyEnrolledClass/>,
-        loader: () => fetch('http://localhost:5000/enrolledClasses')
+        loader: () => fetch('https://pic-studio-server-arfaz31.vercel.app/enrolledClasses')
       },
       {
         path:"payment",
         element: <Payment/>
+      },
+      {
+        path:"paymentHistory",
+        element: <PaymentHistory/>,
+        loader: () => fetch('https://pic-studio-server-arfaz31.vercel.app/paymentHistory')
       },
       
     ]

@@ -9,7 +9,7 @@ const UseAxiosSecure = () => {
    const {logOut} = useContext(AuthContext)
     const navigate = useNavigate(); 
     const axiosSecure = axios.create({
-      baseURL: 'http://localhost:5000', 
+      baseURL: 'https://pic-studio-server-arfaz31.vercel.app', 
     });
     useEffect(() => {
         axiosSecure.interceptors.request.use((config) => {

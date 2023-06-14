@@ -18,7 +18,7 @@ const AddClass = () => {
             price: parseFloat(data.price),
             status:'pending'
         }
-        fetch('http://localhost:5000/classes',{
+        fetch('https://pic-studio-server-arfaz31.vercel.app/classes',{
             method: 'POST',
             headers:{
                 'content-type': 'application/json'

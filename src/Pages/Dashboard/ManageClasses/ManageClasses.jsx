@@ -8,14 +8,14 @@ const ManageClasses = () => {
     const [manageClass, setManageClass]= useState([])
  
     useEffect(()=>{
-        fetch('http://localhost:5000/allclasses')
+        fetch('https://pic-studio-server-arfaz31.vercel.app/allclasses')
         .then(res=> res.json())
         .then(data=> setManageClass(data))
     },[manageClass])
 
    //status change
    const handleApproved = id =>{
-    fetch(`http://localhost:5000/classes/approve/${id}`, {
+    fetch(`https://pic-studio-server-arfaz31.vercel.app/classes/approve/${id}`, {
         method: 'PATCH'
     })
     .then(res => res.json())
@@ -34,7 +34,7 @@ const ManageClasses = () => {
     })
    }
    const handleDenied = id =>{
-    fetch(`http://localhost:5000/classes/deny/${id}`, {
+    fetch(`https://pic-studio-server-arfaz31.vercel.app/classes/deny/${id}`, {
         method: 'PATCH'
     })
     .then(res => res.json())

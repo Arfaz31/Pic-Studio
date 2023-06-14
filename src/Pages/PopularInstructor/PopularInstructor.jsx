@@ -5,7 +5,7 @@ const PopularInstructor = () => {
     const [popularInstructor, setPopularInstructor] =useState([])
 
     useEffect(()=>{
-        fetch('http://localhost:5000/popularInstructor')
+        fetch('https://pic-studio-server-arfaz31.vercel.app/popularInstructor')
         .then(res=> res.json())
         .then(data=> setPopularInstructor(data))
     },[])

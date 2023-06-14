@@ -3,12 +3,24 @@ import React, { useEffect, useState } from 'react';
 const MyClass = () => {
     const [allClass, setAllClass]= useState([])
     console.log(allClass)
+    const [totalEnroll, setTotalEnroll] = useState(0)
 
     useEffect(()=>{
-        fetch('http://localhost:5000/allClasses')
+        fetch('https://pic-studio-server-arfaz31.vercel.app/allClasses')
         .then(res=> res.json())
         .then(data=> setAllClass(data))
     },[])
+
+
+    useEffect(()=>{
+      fetch('https://pic-studio-server-arfaz31.vercel.app/payment/count')
+      .then((res) => res.json())
+      .then(data=>{ 
+        const count = data && data.length > 0 ? data[0].count : 0;
+        setTotalEnroll(count);
+       })
+    },[])
+
 
 
   return (
@@ -29,6 +41,8 @@ const MyClass = () => {
               <p>Price: ${cl.price}</p>
               <p>Available seat: {cl.availableSeat}</p>
               <p>Status: {cl.status}</p>
+              <p className="text-base font-semibold text-gray-500">Total Enroll:{totalEnroll? 0 : totalEnroll} </p>
+              <p className="text-base font-semibold text-gray-500">Feedback:{cl?.feedback} </p>
               <div className="card-actions">
                 <button className="btn btn-info">Update</button>
               </div>

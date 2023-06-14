@@ -71,11 +71,7 @@ const Dashboard = () => {
                     <FaUserCheck></FaUserCheck> My Classes
                   </NavLink>
                 </li>
-                <li className="text-white">
-                  <NavLink to="/dashboard/totalEnrolledClasses">
-                    <FaUserCheck></FaUserCheck> Total Enrolled Students
-                  </NavLink>
-                </li>
+              
               </>
             ) : isAdmin ? (
               <>
